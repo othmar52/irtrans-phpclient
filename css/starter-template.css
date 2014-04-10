@@ -1,0 +1,86 @@
+body {
+  padding-top: 50px;
+  background-color: #111;
+}
+.starter-template {
+  padding: 40px 15px;
+  t!ext-align: center;
+}
+
+* {
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+}
+
+.section h3 {
+	color: #AAA;
+}
+
+.brow button {
+	border: none;
+	background-color: #444;
+	color: #FFF;
+	float:left;
+	margin: 1%;
+	padding: 0.5em;
+}
+
+.brow button:hover {
+	background-color: #555;
+}
+
+.brow .hideme {
+	opacity: 0;
+}
+.brow button:first-child {
+	margin-left: 0;
+}
+
+.brow button:last-child {
+	margin-right: 0;
+}
+
+
+
+.brow1 button {
+	width: 100%;
+}
+
+.brow2 button {
+	width: 49%;
+}
+
+.brow3 button {
+	width: 32%;
+}
+
+.brow4 button {
+	width: 23.5%;
+}
+
+.brow5 button {
+	width: 18.4%;
+}
+
+.brow6 button {
+	width: 15%;
+}
+
+.navbar-nav .navpower {
+	display: none;
+}
+
+@media (max-width: 768px) {
+  .navbar-nav a {
+    display: block;
+    float: left;
+    width: 80%;
+  }
+  
+  .navbar-nav .navpower {
+    display: block;
+    float: right;
+    width: 20%;
+  }
+}
