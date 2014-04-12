@@ -1,19 +1,19 @@
 connections:
   irtrans:
     it1:
-      ip: 127.0.0.1
+      ip: 10.0.0.118
       port: 21000
       
   ezcontrol:
     ez1:
-      ip: 127.0.0.1
+      ip: 10.0.0.118
       pattern: http://%s/control?cmd=set_state_actuator&number=%s&function=%s
       
 # devices/rows/commands
 # make sure configured commands are identical to stored ir-database on your irtrans- or ezcontrol-device 
   
 0:
-  type: funk
+  type: ezcontrol
   label: Funk-Device 1
   rows:
     00:

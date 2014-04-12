@@ -1,8 +1,8 @@
 <?php
 
-require_once('Spyc.php');
-$bla =  Spyc::YAMLLoad('config/default.yaml');
-#echo "<pre>" . print_r($bla, 1) . "</pre>";
+require_once('class.remotecontrol.php');
+
+$remotecontrol = new remotecontrol();
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -56,13 +56,7 @@ $bla =  Spyc::YAMLLoad('config/default.yaml');
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
         <?php
-        foreach($bla as $device => $dConf) {
-        	echo '
-        		<li>
-        			<a class="scrollto" href="#s'.$device .'">' . $dConf['label'] . '</a>
-        			<a class="fire navpower" href="#"><i class="fa fa-power-off fa-lg"></i></a>
-        		</li>';
-        }
+		echo $remotecontrol->renderNavigation();
         
 		
 		?>
@@ -78,35 +72,8 @@ $bla =  Spyc::YAMLLoad('config/default.yaml');
         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p-->
         
         <?php
-        foreach($bla as $device => $dConf) {
-        	echo '<div class="section" id="s'. $device .'"><h3>' . $dConf['label'] . '</h3>' . "\n";
-			foreach($dConf['rows'] as $dRow) {
-				echo '<div class="brow clearfix brow' . count($dRow) . '">';
-				foreach($dRow as $cmd => $rowConfig) {
-					
-					if($rowConfig === NULL) {
-						$class = 'hideme';
-						$text = '';
-					} else {
-						$class = 'cmd';
-						$text = (($rowConfig['icon']) ? '<i class="fa '.$rowConfig['icon'].' fa-lg"></i>' : '') .
-							(($rowConfig['label']) ? ' ' . $rowConfig['label'] : ''); 
-					
-					}
-					echo '<button class="fire ' . $class . '" ' .
-						 'data-type="' . $dConf['type'] .'" ' .
-						 'data-remote="' . $device . '" ' .
-						 'data-cmd="' . $cmd .'" ' .
-						 '>' . $text . "</button>\n";
-					
-					 
-				}
-				echo '</div>';
-			}
-			echo "</div>\n";
-        }
-        
-		
+
+			echo $remotecontrol->renderDeviceButtons();
 		?>
         
         
@@ -143,10 +110,28 @@ $bla =  Spyc::YAMLLoad('config/default.yaml');
     	});
     	
     	function fireCmd(device, cmd) {
-    		
-    		$('.bottom-left').notify({
-			    message: { text: 'TODO: send ' + device + ':' + cmd}
-			}).show();
+    		$.ajax({
+				url: 'ajax.php',
+				data: {
+					remote: $(this).attr('data-remote'),
+					cmd: $(this).attr('data-cmd'),
+					type: $(this).attr('data-type')
+				}
+			}).done(function(response){
+				//$('#status').text(response);
+	    		$('.bottom-left').notify({
+				    message: { text: 'OK: send ' + device + ':' + cmd + ' r:' + response + 'X'}
+				}).show();
+			}).fail(function(){
+				//$('#status').text('FAILED');
+	    		$('.bottom-left').notify({
+				    message: { text: 'FAILED: send ' + device + ':' + cmd + ' r:' + response + 'X'}
+				}).show();
+			});
+			return false;
+			
+			
+
     		
     	}
     	
