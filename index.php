@@ -104,28 +104,28 @@ $remotecontrol = new remotecontrol();
     			$.scrollTo($($(this).attr('href')).offset().top-50, 200);
     		});
     		$('.fire').on('click', function(){
-    			fireCmd($(this).attr('data-remote'), $(this).attr('data-cmd'));
+    			fireCmd($(this).attr('data-remote'), $(this).attr('data-cmd'), $(this).attr('data-type'));
     			return false;
     		})
     	});
     	
-    	function fireCmd(device, cmd) {
+    	function fireCmd(device, cmd, type) {
     		$.ajax({
 				url: 'ajax.php',
 				data: {
-					remote: $(this).attr('data-remote'),
-					cmd: $(this).attr('data-cmd'),
-					type: $(this).attr('data-type')
+					remote: device,
+					cmd: cmd,
+					type: type
 				}
 			}).done(function(response){
 				//$('#status').text(response);
 	    		$('.bottom-left').notify({
-				    message: { text: 'OK: send ' + device + ':' + cmd + ' r:' + response + 'X'}
+				    message: { text: 'OK: ' + response}
 				}).show();
 			}).fail(function(){
 				//$('#status').text('FAILED');
 	    		$('.bottom-left').notify({
-				    message: { text: 'FAILED: send ' + device + ':' + cmd + ' r:' + response + 'X'}
+				    message: { text: 'FAILED: ' + response}
 				}).show();
 			});
 			return false;

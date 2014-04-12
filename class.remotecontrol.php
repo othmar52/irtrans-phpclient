@@ -8,6 +8,8 @@ class remotecontrol {
 	private $irtrans;	// ir sender
 	private $ezcontrol;	// 433 MHz sender
 	
+	private $dryrun = TRUE;	// do not really send command to network devices - just fake it
+	
 	
 	/** 
 	 * Load config in constructor because every method is useless without conf
@@ -25,9 +27,9 @@ class remotecontrol {
 		unset($this->devices['connections']); 
 		
 		
-		echo "<pre>" . print_r($this->irtrans, 1) . "</pre>";
-		echo "<pre>" . print_r($this->ezcontrol, 1) . "</pre>";
-		echo "<pre>" . print_r($this->devices, 1) . "</pre>";
+		#echo "<pre>" . print_r($this->irtrans, 1) . "</pre>";
+		#echo "<pre>" . print_r($this->ezcontrol, 1) . "</pre>";
+		#echo "<pre>" . print_r($this->devices, 1) . "</pre>";
 		
 		// TODO: validate config
 	}
@@ -35,7 +37,10 @@ class remotecontrol {
 	public function fire($remotename, $command)
 	{
 			
-		
+		if($this->dryrun === TRUE) {
+			echo "FAKE: device: " . $remotename . ", cmd: " . $cmd;
+			exit;
+		}
 		// TODO: make senderdevice configurable for each device
 		// TODO: validate command(!!!) and 
 		// TODO: remove hardcoded sender evice
@@ -48,7 +53,7 @@ class remotecontrol {
 		
 		// TODO: send udp packets with php instead of exec(pythonscript)	
 		
-		$cmd = "{$this->client} --host={$ip} --port={$port} \"Asnd {$remotename},{$command}\"";
+		$cmd = dirname(__FILE__) . DIRECTORY_SEPARATOR . "{$this->client} --host={$ip} --port={$port} \"Asnd {$remotename},{$command}\"";
 		echo $cmd;
 		exec($cmd, $response);
 		echo $response[0];
@@ -59,6 +64,11 @@ class remotecontrol {
 	
 	public function funky($actor, $ommand)
 	{
+		if($this->dryrun === TRUE) {
+			echo "FAKE: device: " . $remotename . ", cmd: " . $cmd;
+			exit;
+		}
+		
 		// TODO: remove dummyhandling of ezcontrol 
 		$ezcontrol_ip = '10.0.0.118'; 
 		$url = "http://{$ezcontrol_ip}/control?cmd=set_state_actuator&number={$actor}&function={$ommand}";
