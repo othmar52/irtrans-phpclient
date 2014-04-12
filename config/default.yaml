@@ -1,0 +1,620 @@
+connections:
+  irtrans:
+    it1:
+      ip: 127.0.0.1
+      port: 21000
+      
+  ezcontrol:
+    ez1:
+      ip: 127.0.0.1
+      pattern: http://%s/control?cmd=set_state_actuator&number=%s&function=%s
+      
+# devices/rows/commands
+# make sure configured commands are identical to stored ir-database on your irtrans- or ezcontrol-device 
+  
+0:
+  type: funk
+  label: Funk-Device 1
+  rows:
+    00:
+      0:
+        icon: fa-power-off
+        label: Power
+        powernav: 1
+      1:
+        icon: fa-power-off
+        label: Power
+        powernav: 1
+
+dev1:
+  type: ir
+  label: Beamer
+  rows:
+    00:
+      power:
+        icon: fa-power-off
+        label: Power
+      
+      volup:
+        icon: fa-chevron-up
+        label: VOL+
+      
+      voldown:
+        icon: fa-chevron-down
+        label: VOL-
+      
+    
+    01:
+      chup:
+        icon: fa-chevron-up
+        label: CHANNEL
+      
+      chdown:
+        icon: fa-chevron-down
+        label: CHANNEL
+      
+    
+    0:
+      src_hdmi1:
+        icon: fa-sign-in
+        label: HDMI1
+      
+      src_hdmi2:
+        icon: fa-sign-in
+        label: HDMI2
+      
+      src_hdmi3:
+        icon: fa-sign-in
+        label: HDMI3
+      
+    
+    1:
+      emptyspace1: NULL
+      up:
+        icon: fa-caret-up
+        label: 
+      
+      emptyspace2: NULL
+    
+    
+    2:
+      left:
+        icon: fa-caret-left
+        label: 
+      
+      ok:
+        icon: MULL
+        label: OK
+      
+      right:
+        icon: fa-caret-right
+      
+    
+    
+    3:
+      emptyspace1: NULL
+      down:
+        icon: fa-caret-down
+        label: NULL
+      
+      emptyspace2: NULL
+    
+    4:
+      num7:
+        label: 7
+      
+      num8:
+        label: 8
+      
+      num9:
+        label: 9
+      
+      slash:
+        label: /
+      
+    
+    5:
+      num4:
+        label: 4
+      
+      num5:
+        label: 5
+      
+      num6:
+        label: 6
+      
+      raute:
+        label: #
+      
+    
+    6:
+      num1:
+        label: 1
+      
+      num2:
+        label: 2
+      
+      num3:
+        label: 3
+      
+      point:
+        label: .
+      
+    
+    
+    pla:
+      stop:
+        icon: fa-stop
+      
+      play:
+        icon: fa-play
+      
+      pause:
+        icon: fa-pause
+      
+      rec:
+        icon: fa-circle
+      
+    
+    plb:
+      rew:
+        icon: fa-backward
+      
+      ffw:
+        icon: fa-forward
+      
+      reletext:
+        icon: fa-pause
+      
+      topt:
+        label: T.OPT
+      
+    
+    5er:
+      stop:
+        icon: fa-stop
+      
+      play:
+        icon: fa-play
+      
+      pause:
+        icon: fa-pause
+      
+      rec:
+        icon: fa-circle
+      
+      5tes:
+        icon: fa-stop
+      
+    
+    6er:
+      stop:
+        icon: fa-stop
+      
+      play:
+        icon: fa-play
+      
+      pause:
+        icon: fa-pause
+      
+      rec:
+        icon: fa-circle
+      
+      5tes:
+        icon: fa-stop
+      
+      6tes:
+        icon: fa-caret-down
+
+
+dev2:
+  type: ir
+  label: TV
+  rows:
+    00:
+      power:
+        icon: fa-power-off
+        label: Power
+      
+      volup:
+        icon: fa-chevron-up
+        label: VOL+
+      
+      voldown:
+        icon: fa-chevron-down
+        label: VOL-
+      
+    
+    01:
+      chup:
+        icon: fa-chevron-up
+        label: CHANNEL
+      
+      chdown:
+        icon: fa-chevron-down
+        label: CHANNEL
+      
+    
+    0:
+      src_hdmi1:
+        icon: fa-sign-in
+        label: HDMI1
+      
+      src_hdmi2:
+        icon: fa-sign-in
+        label: HDMI2
+      
+      src_hdmi3:
+        icon: fa-sign-in
+        label: HDMI3
+      
+    
+    1:
+      emptyspace1: NULL
+      up:
+        icon: fa-caret-up
+        label: 
+      
+      emptyspace2: NULL
+    
+    
+    2:
+      left:
+        icon: fa-caret-left
+        label: 
+      
+      ok:
+        icon: MULL
+        label: OK
+      
+      right:
+        icon: fa-caret-right
+        label: 
+      
+    
+    
+    3:
+      emptyspace1: NULL
+      down:
+        icon: fa-caret-down
+        label: NULL
+      
+      emptyspace2: NULL
+    
+    
+    pla:
+      stop:
+        icon: fa-stop
+      
+      play:
+        icon: fa-play
+      
+      pause:
+        icon: fa-pause
+      
+      rec:
+        icon: fa-circle
+      
+    
+    plb:
+      rew:
+        icon: fa-backward
+      
+      ffw:
+        icon: fa-forward
+      
+      reletext:
+        icon: fa-pause
+      
+      topt:
+        label: T.OPT
+      
+    
+    5er:
+      stop:
+        icon: fa-stop
+      
+      play:
+        icon: fa-play
+      
+      pause:
+        icon: fa-pause
+      
+      rec:
+        icon: fa-circle
+      
+      5tes:
+        icon: fa-stop
+      
+    
+    6er:
+      stop:
+        icon: fa-stop
+      
+      play:
+        icon: fa-play
+      
+      pause:
+        icon: fa-pause
+      
+      rec:
+        icon: fa-circle
+      
+      5tes:
+        icon: fa-stop
+      
+      6tes:
+        icon: fa-caret-down
+      
+    
+  
+
+
+
+dev3:
+  type: ir
+  label: Verstärker
+  rows:
+    00:
+      power:
+        icon: fa-power-off
+        label: Power
+      
+      volup:
+        icon: fa-chevron-up
+        label: VOL+
+      
+      voldown:
+        icon: fa-chevron-down
+        label: VOL-
+      
+    
+    01:
+      chup:
+        icon: fa-chevron-up
+        label: CHANNEL
+      
+      chdown:
+        icon: fa-chevron-down
+        label: CHANNEL
+      
+    
+    0:
+      src_hdmi1:
+        icon: fa-sign-in
+        label: HDMI1
+      
+      src_hdmi2:
+        icon: fa-sign-in
+        label: HDMI2
+      
+      src_hdmi3:
+        icon: fa-sign-in
+        label: HDMI3
+      
+    
+    1:
+      emptyspace1: NULL
+      up:
+        icon: fa-caret-up
+        label: 
+      
+      emptyspace2: NULL
+    
+    
+    2:
+      left:
+        icon: fa-caret-left
+        label: 
+      
+      ok:
+        icon: MULL
+        label: OK
+      
+      right:
+        icon: fa-caret-right
+        label: 
+      
+    
+    
+    3:
+      emptyspace1: NULL
+      down:
+        icon: fa-caret-down
+        label: NULL
+      
+      emptyspace2: NULL
+    
+    
+    pla:
+      stop:
+        icon: fa-stop
+      
+      play:
+        icon: fa-play
+      
+      pause:
+        icon: fa-pause
+      
+      rec:
+        icon: fa-circle
+      
+    
+    plb:
+      rew:
+        icon: fa-backward
+      
+      ffw:
+        icon: fa-forward
+      
+      reletext:
+        icon: fa-pause
+      
+      topt:
+        label: T.OPT
+      
+    
+    5er:
+      stop:
+        icon: fa-stop
+      
+      play:
+        icon: fa-play
+      
+      pause:
+        icon: fa-pause
+      
+      rec:
+        icon: fa-circle
+      
+      5tes:
+        icon: fa-stop
+      
+    
+    6er:
+      stop:
+        icon: fa-stop
+      
+      play:
+        icon: fa-play
+      
+      pause:
+        icon: fa-pause
+      
+      rec:
+        icon: fa-circle
+      
+      5tes:
+        icon: fa-stop
+      
+      6tes:
+        icon: fa-caret-down
+      
+    
+  
+
+
+
+dev4:
+  type: ir
+  label: BluRay
+  rows:
+    00:
+      power:
+        icon: fa-power-off
+        label: Power
+      
+      volup:
+        icon: fa-chevron-up
+        label: VOL+
+      
+      voldown:
+        icon: fa-chevron-down
+        label: VOL-
+      
+    
+  
+
+
+dev5:
+  type: ir
+  label: Tuner
+  rows:
+    00:
+      power:
+        icon: fa-power-off
+        label: Power
+      
+      volup:
+        icon: fa-chevron-up
+        label: VOL+
+      
+      voldown:
+        icon: fa-chevron-down
+        label: VOL-
+      
+    
+  
+
+
+dev6:
+  type: ir
+  label: CD
+  rows:
+    00:
+      power:
+        icon: fa-power-off
+        label: Power
+      
+      volup:
+        icon: fa-chevron-up
+        label: VOL+
+      
+      voldown:
+        icon: fa-chevron-down
+        label: VOL-
+      
+    
+  
+
+
+dev7:
+  type: ir
+  label: Tape
+  rows:
+    00:
+      power:
+        icon: fa-power-off
+        label: Power
+      
+      volup:
+        icon: fa-chevron-up
+        label: VOL+
+      
+      voldown:
+        icon: fa-chevron-down
+        label: VOL-
+      
+    
+  
+
+
+dev8:
+  type: ir
+  label: TV-Lift
+  rows:
+    00:
+      power:
+        icon: fa-power-off
+        label: Power
+      
+      volup:
+        icon: fa-chevron-up
+        label: VOL+
+      
+      voldown:
+        icon: fa-chevron-down
+        label: VOL-
+      
+    
+  
+
+
+dev10:
+  type: ir
+  label: HDMI Streamer
+  rows:
+    00:
+      power:
+        icon: fa-power-off
+        label: Power
+      
+      volup:
+        icon: fa-chevron-up
+        label: VOL+
+      
+      voldown:
+        icon: fa-chevron-down
+        label: VOL-
+        
+      
