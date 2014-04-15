@@ -120,7 +120,8 @@ $remotecontrol = new remotecontrol();
 			}).done(function(response){
 				//$('#status').text(response);
 	    		$('.bottom-left').notify({
-				    message: { text: 'OK: ' + response}
+				    message: { text: 'OK: ' + response},
+					fadeOut: { enabled: true, delay: 500 }
 				}).show();
 			}).fail(function(){
 				//$('#status').text('FAILED');
