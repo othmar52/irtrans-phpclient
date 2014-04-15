@@ -8,7 +8,7 @@ class remotecontrol {
 	private $irtrans;	// ir sender
 	private $ezcontrol;	// 433 MHz sender
 	
-	private $dryrun = TRUE;	// do not really send command to network devices - just fake it
+	private $dryrun = FALSE;	// do not really send command to network devices - just fake it
 	
 	
 	/** 
@@ -16,7 +16,7 @@ class remotecontrol {
 	 * 
 	 * @return Instance of remotecontrol  
 	 **/
-	public function __construct($remotename, $command)
+	public function __construct()
 	{
 		require_once('Spyc.php');
 		$this->devices = Spyc::YAMLLoad('config/default.yaml');
@@ -38,7 +38,7 @@ class remotecontrol {
 	{
 			
 		if($this->dryrun === TRUE) {
-			echo "FAKE: device: " . $remotename . ", cmd: " . $cmd;
+			echo "FAKE: device: " . $remotename . ", cmd: " . $command;
 			exit;
 		}
 		// TODO: make senderdevice configurable for each device
@@ -54,7 +54,7 @@ class remotecontrol {
 		// TODO: send udp packets with php instead of exec(pythonscript)	
 		
 		$cmd = dirname(__FILE__) . DIRECTORY_SEPARATOR . "{$this->client} --host={$ip} --port={$port} \"Asnd {$remotename},{$command}\"";
-		echo $cmd;
+		#echo $cmd;
 		exec($cmd, $response);
 		echo $response[0];
 		exit;
@@ -83,10 +83,15 @@ class remotecontrol {
 		// TODO: render only powerbutton with buttonconfig "powernav: 1"
 		$markup ="";
 	    foreach($this->devices as $device => $dConf) {
+			$button = '<button class="fire navpower" ' .
+						 'data-type="' . $dConf['type'] .'" ' .
+						 'data-remote="' . $device . '" ' .
+						 'data-cmd="' . $dConf['powernav'] .'" ' .
+						 '>' . "<i class=\"fa fa-power-off fa-lg\"></i></button>\n";
         	$markup .= '
         		<li>
         			<a class="scrollto" href="#s'.$device .'">' . $dConf['label'] . '</a>
-        			<a class="fire navpower" href="#"><i class="fa fa-power-off fa-lg"></i></a>
+        			'.$button.'
         		</li>';
         }
 			
@@ -100,6 +105,7 @@ class remotecontrol {
 		// TODO: move markup to tempalte
 		$markup = "";
 		foreach($this->devices as $device => $dConf) {
+			$dConf['label'] = (array_key_exists( 'label',$dConf)) ? $dConf['label'] : FALSE;
         	$markup .= '<div class="section" id="s'. $device .'"><h3>' . $dConf['label'] . '</h3>' . "\n";
 			foreach($dConf['rows'] as $dRow) {
 				$markup .= '<div class="brow clearfix brow' . count($dRow) . '">';
@@ -110,8 +116,11 @@ class remotecontrol {
 						$text = '';
 					} else {
 						$class = 'cmd';
-						$text = (($rowConfig['icon']) ? '<i class="fa '.$rowConfig['icon'].' fa-lg"></i>' : '') .
-							(($rowConfig['label']) ? ' ' . $rowConfig['label'] : ''); 
+						$rowConfig['icon'] = (array_key_exists( 'icon',$rowConfig)) ? $rowConfig['icon'] : FALSE;
+						$rowConfig['label'] = (array_key_exists( 'label',$rowConfig)) ? $rowConfig['label'] : FALSE;
+						
+						$text = (($rowConfig['icon'] !== FALSE) ? '<i class="fa '.$rowConfig['icon'].' fa-lg"></i>' : '') .
+							(($rowConfig['label'] !== FALSE) ? ' ' . $rowConfig['label'] : ''); 
 					
 					}
 					$markup .= '<button class="fire ' . $class . '" ' .
