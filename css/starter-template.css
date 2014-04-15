@@ -83,4 +83,12 @@ body {
     float: right;
     width: 20%;
   }
+  
+}
+@media (min-width: 700px) {
+  .starter-template .section {
+  	width: 48%;
+  	float: left;
+  	margin: 0 1%;
+  }
 }
