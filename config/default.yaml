@@ -10,7 +10,8 @@ connections:
       pattern: http://%s/control?cmd=set_state_actuator&number=%s&function=%s
       
 # devices/rows/commands
-# make sure configured commands are identical to stored ir-database on your irtrans- or ezcontrol-device 
+# make sure configured commands are identical to stored ir-database on your irtrans- or ezcontrol-device
+# http://fortawesome.github.io/Font-Awesome/icons/#web-application
 
 tv_lg_42lm620s:
   type: ir
@@ -97,6 +98,7 @@ tv_lg_42lm620s:
       
       settings:
         label: SETTINGS
+#        icon: fa-wrench
       
     
     5:
@@ -185,15 +187,18 @@ tv_lg_42lm620s:
     6er:
       help:
         label: HELP
+        icon: fa-question
       
       ratio:
         label: RATIO
+        icon: fa-crop
     7er:
       quickview:
         label: QUICKVIEW
       
       favorites:
         label: FAVORITES
+        icon: fa-star
     8er:
       toggle_3d:
         label: 3D TOGGLE
@@ -206,6 +211,7 @@ tv_lg_42lm620s:
       
       info:
         label: INFO
+        icon: fa-info-circle
     10er:
       audio_desc:
         label: AUDIO.DESC
@@ -322,6 +328,52 @@ beamer_epson_ew3200:
       
       blank:
         label: blank
+      
+
+amp_jvc_rx5020r:
+  type: ir
+  label: Verstärker
+  powernav: power
+  rows:
+    00:
+      power:
+        icon: fa-power-off
+        label: Power
+      
+      vol_up:
+        icon: fa-chevron-up
+        label: VOL+
+      
+      vol_down:
+        icon: fa-chevron-down
+        label: VOL-
+      
+
+    0:
+      src_tape:
+        icon: fa-sign-in
+        label: Tape
+      
+      src_cd:
+        icon: fa-sign-in
+        label: CD
+      
+      src_tuner:
+        icon: fa-sign-in
+        label: Tuner
+      
+    022:
+      src_vcr:
+        icon: fa-sign-in
+        label: VCR
+      
+      src_tv:
+        icon: fa-sign-in
+        label: TV
+      
+      src_dvd:
+        icon: fa-sign-in
+        label: DVD
       
 
     
