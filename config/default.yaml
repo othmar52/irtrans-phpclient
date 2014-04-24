@@ -348,6 +348,12 @@ amp_jvc_rx5020r:
         icon: fa-chevron-down
         label: VOL-
       
+    sur:
+      sur_mode:
+        label: SUR.MODE
+
+      sur_toggle:
+        label: SUR.TOGGLE
 
     0:
       src_tape:

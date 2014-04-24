@@ -8,7 +8,7 @@ class remotecontrol {
 	private $irtrans;	// ir sender
 	private $ezcontrol;	// 433 MHz sender
 	
-	private $dryrun = TRUE;	// do not really send command to network devices - just fake it
+	private $dryrun = FALSE;	// do not really send command to network devices - just fake it
 	
 	
 	/** 
